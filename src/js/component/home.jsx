@@ -8,7 +8,7 @@ import rigoImage from "../../img/rigo-baby.jpg";
 //create your first component
 const Home = ({ seconds }) => {
   return (
-    <div className=" container-fluid d-flex gap-2 justify-content-center bg-black">
+    <div className=" container-fluid d-flex gap-2 justify-content-center bg-black my-1">
       <CardClock />
       <Card number={Math.floor((seconds % 1000000) / 100000)} />
       <Card number={Math.floor((seconds % 100000) / 10000)} />

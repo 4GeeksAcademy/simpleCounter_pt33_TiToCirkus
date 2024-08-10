@@ -7,6 +7,8 @@ import "../styles/index.css";
 
 //import your own components
 import Home from "./component/home.jsx";
+import { func } from "prop-types";
+import Card from "./component/card.jsx";
 
 function myCallback() {
   counter++;
@@ -18,6 +20,7 @@ function myCallback() {
 let intervalID = null;
 
 let counter = 0;
+let alertValue = counter + 1;
 
 function updateCounter() {
   counter++;
@@ -57,11 +60,17 @@ const MainComponent = () => {
             className="ms-4"
             type="number"
             onChange={(event) => {
-              counter = event.target.value;
+              alertValue = event.target.value;
               root.render(<MainComponent />);
             }}
           />
         </div>
+
+        {counter >= alertValue && (
+          <div class="alert alert-danger text-center" role="alert">
+            Alerta has llegado a {alertValue} segundos
+          </div>
+        )}
 
         <div className="p-2 d-flex gap-2 d-flex justify-content-center">
           {intervalID == null && (
@@ -117,6 +126,5 @@ const MainComponent = () => {
     </>
   );
 };
-
 let root = ReactDOM.createRoot(document.getElementById("app"));
 root.render(<MainComponent />);
